@@ -1,0 +1,5 @@
+com\example\auth\config\WebConfig.class
+com\example\auth\config\SecurityConfig.class
+com\example\auth\controller\LoginController.class
+com\example\auth\AuthApplication.class
+com\example\auth\controller\HomeController.class
