@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Панель администратора</title>
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>Панель администратора</h1>
+    </header>
+
+    <nav>
+        <a th:href="@{/home}">На главную</a>
+        <form th:action="@{/logout}" method="post" style="display:inline;">
+            <button type="submit" class="btn-logout">Выйти</button>
+        </form>
+    </nav>
+
+    <main>
+        <h2 th:text="${message}"></h2>
+        <p>Эта страница доступна только пользователям с ролью ADMIN.</p>
+
+        <div class="admin-features">
+            <h3>Функции администратора:</h3>
+            <ul>
+                <li>Управление пользователями</li>
+                <li>Просмотр логов безопасности</li>
+                <li>Настройка системы</li>
+            </ul>
+        </div>
+    </main>
+</div>
+</body>
+</html>

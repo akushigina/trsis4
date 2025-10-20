@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+    <meta charset="UTF-8">
+    <title>Главная страница</title>
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Добро пожаловать!</h1>
+            <div class="user-info">
+                Вы вошли как: <span th:text="${username}"></span>
+                <div>Роли: <span th:text="${roles}"></span></div>
+            </div>
+        </header>
+        
+        <nav>
+            <a th:href="@{/home}">Главная</a>
+            <a sec:authorize="hasRole('ADMIN')" th:href="@{/admin/dashboard}">Панель администратора</a>
+            <form th:action="@{/logout}" method="post" style="display:inline;">
+                <button type="submit" class="btn-logout">Выйти</button>
+            </form>
+        </nav>
+        
+        <main>
+            <h2>Защищённая страница</h2>
+            <p>Эта страница доступна только аутентифицированным пользователям.</p>
+            
+            <div sec:authorize="hasRole('ADMIN')" class="admin-section">
+                <h3>Секция для администраторов</h3>
+                <p>Эта секция видна только пользователям с ролью ADMIN.</p>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
